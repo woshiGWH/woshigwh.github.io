@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../BoorStrap/bootStrap/css/bootstrap.min.css">
+    <!-- <script src="calculate.js"></script> -->
+    <style>
+        button{
+            font-size: 50px;
+        }
+        #subject{
+             font-size: 50px;
+        }
+    </style>
+</head>
+<body onload="func()">
+    <!-- 生成页面 -->
+    <div>
+        <div id="subject"></div>
+        <button id="A" onclick="select(this.id)"></button>
+        <button id="B" onclick="select(this.id)"></button>
+        <button id="C" onclick="select(this.id)"></button>
+        <button id="D" onclick="select(this.id)"></button>
+    </div>
+
+    <script>
+        var A = document.getElementById("A");
+        var B = document.getElementById("B");
+        var C = document.getElementById("C");
+        var D = document.getElementById("D");
+        var sub = document.getElementById("subject");
+    
+    var x = 0;
+    function func(){
+        count();
+    }
+
+    function count(){
+        //生成四种结果
+        var option = Math.floor(Math.random()*4 + 1);
+        x = option;
+        //生成四种符号
+        var mark =Math.floor(Math.random()*4 + 1);
+        //生成两个计算的数字
+        var num1 = Math.floor(Math.random()*20 + 1);
+        var num2 = Math.floor(Math.random()*20 + 1);
+        //正确答案
+        var t = 0;
+
+        //生成题目
+        switch(mark){
+            case 1:
+                sub.innerHTML = num1 + "+" + num2;
+                t = num1 + num2;
+                break;
+            case 2:
+                sub.innerHTML = num1 + "-" + num2;
+                t = num1 - num2;
+                break;
+            case 3:
+                sub.innerHTML = num1 + "*" + num2;
+                t = num1 * num2;
+                break;
+            case 4:
+                sub.innerHTML = num1 + "/" + num2;
+                t = Math.trunc(num1 / num2);
+                break;
+            default:
+                sub.innerHTML = "错误";
+                break;       
+        }
+
+        //生成四个选项
+        switch(option){
+            case 1:
+                A.innerHTML = "A." + t;
+                B.innerHTML = "B." + Math.floor(Math.random()* 20 + t);
+                C.innerHTML = "C." + Math.floor(Math.random()* 20 + t);
+                D.innerHTML = "D." + Math.floor(Math.random()* 20 + t);
+                break;
+            case 2:
+                A.innerHTML = "A." + Math.floor(Math.random()* 20 + t);
+                B.innerHTML = t;
+                C.innerHTML = "C." + Math.floor(Math.random()* 20 + t);
+                D.innerHTML = "D." + Math.floor(Math.random()* 20 + t);
+                break;
+            case 3:
+                A.innerHTML = "A." + Math.floor(Math.random()* 20 + t);
+                B.innerHTML = "B." + Math.floor(Math.random()* 20 + t);
+                C.innerHTML = t;
+                D.innerHTML = "D." + Math.floor(Math.random()* 20 + t);
+                break;
+            case 4:
+                A.innerHTML = "A." + Math.floor(Math.random()* 20 + t);
+                B.innerHTML = "B." + Math.floor(Math.random()* 20 + t);
+                C.innerHTML = "C." + Math.floor(Math.random()* 20 + t);
+                D.innerHTML = t;
+                break;
+            default:
+                break;
+
+        }
+    }
+    function select(id){
+    var o=id;
+    //判断选项与正确选项是否相符
+    if(o=="A"&&x==1){
+      alert("答对啦！");
+      count();
+    }else if(o=="B"&&x==2){
+      alert("答对啦！");
+      count();
+    }else if(o=="C"&&x==3){
+      alert("答对啦！");
+      count();
+    }else if(o=="D"&&x==4){
+      alert("答对啦！");
+      count();
+    }else{
+      alert("回答错误！");
+      count();
+    }
+}
+    </script>
+</body>
+</html>
